@@ -37,11 +37,11 @@ EXCLUDED_END_START = ['y', 'de', 'un', 'o', 'a', 'son', 'los', 'se', 'la', 'en',
 EXCLUDED_END_CHARS = ['.', ',', '(', ')', '-', ':']
 EXCLUDED = ['(', ')', '"', '”']
 
-# mierda de twitter que ya está en config.py 
-""" API_KEY = os.environ['API_KEY']
+# mierda de twitter 
+API_KEY = os.environ['API_KEY']
 API_KEY_SECRET = os.environ['API_KEY_SECRET']
 ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
-ACCESS_TOKEN_SECRET = os.environ['ACCESS_TOKEN_SECRET'] """
+ACCESS_TOKEN_SECRET = os.environ['ACCESS_TOKEN_SECRET']
 
 def generate_text(tweets):
 
