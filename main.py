@@ -16,10 +16,12 @@ import tweepy
 
 from config import API_KEY, API_KEY_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET
 
-# están todos los nombres de cosas en inglés porque es muy awkward ponerlo en español
+USE_ENV_VARIABLES = True
 
 SOURCE_TEXT = 'text.txt'
 IS_TEXT_FILE = False
+
+SOURCE_ACCOUNT_ID = 'Neoalpaca'
 
 TWEETS = ''
 
@@ -37,11 +39,11 @@ EXCLUDED_END_START = ['y', 'de', 'un', 'o', 'a', 'son', 'los', 'se', 'la', 'en',
 EXCLUDED_END_CHARS = ['.', ',', '(', ')', '-', ':']
 EXCLUDED = ['(', ')', '"', '”']
 
-# mierda de twitter 
-API_KEY = os.environ['API_KEY']
-API_KEY_SECRET = os.environ['API_KEY_SECRET']
-ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
-ACCESS_TOKEN_SECRET = os.environ['ACCESS_TOKEN_SECRET']
+if USE_ENV_VARIABLES:
+    API_KEY = os.environ['API_KEY']
+    API_KEY_SECRET = os.environ['API_KEY_SECRET']
+    ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
+    ACCESS_TOKEN_SECRET = os.environ['ACCESS_TOKEN_SECRET']
 
 def generate_text(tweets):
 
@@ -140,7 +142,7 @@ def generate_text(tweets):
 def save_tweets():
     
     tweets = []
-    for tweet in tweepy.Cursor(api.user_timeline, id='Neoalpaca').items():
+    for tweet in tweepy.Cursor(api.user_timeline, id=SOURCE_ACCOUNT_ID).items():
         tweets.append(tweet.text)
 
     #limpiar basura de los tweets, links y menciones
